@@ -9,6 +9,8 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
+ * 限流器配置包装类
+ *
  * @author gyx
  * @date 2021/8/12 11:07
  */
@@ -29,7 +31,6 @@ public class LimiterConfigWrapper {
     private ScheduledExecutorService scheduledThreadExecutor;
 
     //Ticket server interface
-    public static String http_monitor = "monitor";
     public static String http_heart = "heart";
     public static String http_token = "token";
 
