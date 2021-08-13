@@ -14,15 +14,16 @@ public class FailFastAccess implements AccessStrategy {
 
     /**
      * 尝试访问
+     *
      * @param bucket 令牌桶
      * @param rule   限流器规则
      */
     @Override
-    public boolean tryAccess(AtomicLong bucket,LimiterRuleWrapper rule) {
+    public boolean tryAccess(AtomicLong bucket, LimiterRuleWrapper rule, Integer tokenNum) {
         //CAS获取令牌,没有令牌立即失败
         long l = bucket.longValue();
-        while (l > 0) {
-            if (bucket.compareAndSet(l, l - 1)) {
+        while (l >= tokenNum) {
+            if (bucket.compareAndSet(l, l - tokenNum)) {
                 return true;
             }
             l = bucket.longValue();

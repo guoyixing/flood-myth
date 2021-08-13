@@ -80,4 +80,15 @@ public class RegisterServer {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
+    /**
+     * 根据id获取 限流处理器
+     * @param id 限流器id
+     */
+    public static LimiterHandler get(String id) {
+        LimiterHandler limiterHandler = limiterContainer.get(id);
+        if (limiterHandler == null){
+            throw new RuntimeException("无法查询到处理");
+        }
+        return limiterHandler;
+    }
 }

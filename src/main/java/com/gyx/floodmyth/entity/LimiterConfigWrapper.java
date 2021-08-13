@@ -22,7 +22,7 @@ public class LimiterConfigWrapper {
     private static volatile LimiterConfigWrapper limiterConfigWrapper;
 
     /**
-     * 发票服务器
+     * 令牌分发服务
      */
     private AllotServer allotServer;
     /**

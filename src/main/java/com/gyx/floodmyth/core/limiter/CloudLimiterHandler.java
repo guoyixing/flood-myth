@@ -18,10 +18,12 @@ public class CloudLimiterHandler extends AbstractLimiterHandler {
 
     /**
      * 尝试访问
+     *
+     * @param tokenNum 消耗的令牌数量
      */
     @Override
-    public boolean tryAccess() {
-        boolean accessFlag = super.tryAccess();
+    public boolean tryAccess(Integer tokenNum) {
+        boolean accessFlag = super.tryAccess(tokenNum);
         putCloudBucket();
         return accessFlag;
     }

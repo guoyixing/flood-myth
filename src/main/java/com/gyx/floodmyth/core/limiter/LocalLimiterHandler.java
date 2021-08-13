@@ -17,14 +17,16 @@ public class LocalLimiterHandler extends AbstractLimiterHandler {
 
     /**
      * 尝试访问
+     *
+     * @param tokenNum 消耗的令牌数量
      */
     @Override
-    public boolean tryAccess() {
+    public boolean tryAccess(Integer tokenNum) {
         if (rule.isEnable()) {
             //限流功能已关闭
             return true;
         }
-        return super.tryAccess();
+        return super.tryAccess(tokenNum);
     }
 
     /**

@@ -16,12 +16,13 @@ public class BlockingAccess implements AccessStrategy {
      *
      * @param bucket 令牌桶
      * @param rule   限流器规则
+     * @param tokenNum   消耗的令牌数量
      */
     @Override
-    public boolean tryAccess(AtomicLong bucket, LimiterRuleWrapper rule) {
+    public boolean tryAccess(AtomicLong bucket, LimiterRuleWrapper rule,Integer tokenNum) {
         //CAS获取令牌,阻塞直到成功
         long l = bucket.longValue();
-        while (!(l > 0 && bucket.compareAndSet(l, l - 1))) {
+        while (!(l >= tokenNum && bucket.compareAndSet(l, l - tokenNum))) {
             sleep(rule);
             l = bucket.longValue();
         }

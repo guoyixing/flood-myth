@@ -41,13 +41,15 @@ public abstract class AbstractLimiterHandler implements LimiterHandler {
 
     /**
      * 尝试访问
+     *
+     * @param tokenNum 消耗的令牌数量
      */
     @Override
-    public boolean tryAccess() {
+    public boolean tryAccess(Integer tokenNum) {
         if (rule.getLimit() == 0) {
             return false;
         }
-        return AccessStrategy.strategy.get(rule.getAccessModel()).tryAccess(bucket, rule);
+        return AccessStrategy.strategy.get(rule.getAccessModel()).tryAccess(bucket, rule,tokenNum);
     }
 
     /**
