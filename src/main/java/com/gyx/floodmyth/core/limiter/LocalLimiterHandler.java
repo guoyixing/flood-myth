@@ -41,6 +41,10 @@ public class LocalLimiterHandler extends AbstractLimiterHandler {
             return;
         }
         this.scheduledFuture = config.getScheduledThreadExecutor()
-                .scheduleAtFixedRate(() -> bucket.set(rule.getLimit()), rule.getInitialDelay(), rule.getPeriod(), rule.getUnit());
+                .scheduleAtFixedRate(() -> {
+                    if (bucket.get() + rule.getLimit() < rule.getMaxLimit()) {
+                        bucket.set(rule.getLimit());
+                    }
+                }, rule.getInitialDelay(), rule.getPeriod(), rule.getUnit());
     }
 }

@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2021/8/12 10:35
  */
 @Data
-public class LimiterRuleWrapper implements Comparable<LimiterRuleWrapper>{
+public class LimiterRuleWrapper implements Comparable<LimiterRuleWrapper> {
 
     /**
      * app name
@@ -38,6 +38,10 @@ public class LimiterRuleWrapper implements Comparable<LimiterRuleWrapper>{
      * 单位时间存放的令牌数
      */
     private long limit;
+    /**
+     * 令牌上限
+     */
+    private long maxLimit;
     /**
      * 单位时间大小
      */

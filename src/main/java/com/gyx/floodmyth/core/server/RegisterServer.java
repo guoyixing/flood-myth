@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 限流处理器注册服务、更新服务
  *
- * @author 郭一行
+ * @author gyx
  * @date 2021/8/13 9:40
  */
 public class RegisterServer {
