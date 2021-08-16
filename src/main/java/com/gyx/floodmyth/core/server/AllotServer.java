@@ -28,7 +28,6 @@ public class AllotServer {
     private List<String> backupsList = new CopyOnWriteArrayList<>();
     private ReentrantLock lock = new ReentrantLock();
     private int pos = 0;
-    private long start = 0;
 
 
     /**
@@ -78,10 +77,6 @@ public class AllotServer {
                     .execute()
                     .getBody();
         } catch (IOException e) {
-            if (System.currentTimeMillis() - start >3000) {
-                System.out.println(server+"The server is not available.");
-                start = System.currentTimeMillis();
-            }
             serverList.remove(server);
             backupsList.add(server);
         }

@@ -29,16 +29,6 @@ public class CloudLimiterHandler extends AbstractLimiterHandler {
     }
 
     /**
-     * 初始化
-     *
-     * @param rule 限流规则的包装器
-     */
-    @Override
-    public void init(LimiterRuleWrapper rule) {
-        super.init(rule);
-    }
-
-    /**
      * 从集群令牌分发中心，获取令牌，填装到令牌桶中
      */
     private void putCloudBucket() {

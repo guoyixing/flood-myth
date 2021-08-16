@@ -46,6 +46,10 @@ public abstract class AbstractLimiterHandler implements LimiterHandler {
      */
     @Override
     public boolean tryAccess(Integer tokenNum) {
+        if (rule.isEnable()) {
+            //限流功能已关闭
+            return true;
+        }
         if (rule.getLimit() == 0) {
             return false;
         }
